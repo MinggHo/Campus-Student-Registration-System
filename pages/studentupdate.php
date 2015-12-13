@@ -135,8 +135,8 @@ if (!isset($_SESSION['userIDD']))
                            $passw=md5($_POST['passw']);         
                           $sqlp="UPDATE student SET email = '$email',tel_num = '$tel_num' WHERE user_id='$id'";
                           $resultp = mysqli_query($conn,$sqlp);
-                          $sqlq="UPDATE user SET passw = '$passw' WHERE user_id='$id'";
-                          $resultq = mysqli_query($conn,$sqlq);
+                          // $sqlq="UPDATE user SET passw = '$passw' WHERE user_id='$id'";
+                          // $resultq = mysqli_query($conn,$sqlq);
                           echo "<script language='Javascript'> 
                           alert('Data has been updated'); 
                           location.href='studentpage.php'
@@ -186,7 +186,7 @@ if (!isset($_SESSION['userIDD']))
               				<i class="glyphicon glyphicon-lock">
               				</i>
               			 </div>
-              			 <input class="form-control" id="password" name="password" value="<?=$rowm['passw']?>"  type="password"/>
+              			 <input class="form-control" id="password" name="password" disabled=""> value="<?=$rowm['passw']?>"  type="password"/>
               			</div>
               		 </div>
 

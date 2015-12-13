@@ -31,6 +31,36 @@ if (!isset($_SESSION['userIDD']))
     $rowk=$resultk->fetch_row();
     
 
+
+// $sqlr = "SELECT room_id FROM room r WHERE r.user_id IS NULL OR
+//       r.user_id = '' LIMIT 1";
+// //$sql = "SELECT RoomId FROM room WHERE room.RoomId NOT IN (SELECT roomId FROM user) LIMIT 1";
+// $resultr = $conn->query($sqlr);
+// if ($resultr->num_rows == 1) {
+//     while($rowr = mysqli_fetch_assoc($resultr)){
+//       $emptyRoom = $rowr["room_id"];
+//     }
+// } else {
+//   echo "<script language='Javascript'> 
+//     alert('No empty room!'); 
+//     location.href='studentpage.php'
+//     </script>";
+//       exit(); 
+
+//     // echo "Error: " . $sql . "<br>" . $conn->error;
+// }
+
+// $sqlUpdate2 = "UPDATE `room` SET `user_id`='$id' WHERE room_id='$emptyRoom'";
+// $sqlUpdate = "UPDATE `user` SET `regTime`='".date('Y-m-d H:i:s',time())."' WHERE IdNum='$id'";
+// //$sqlUpdate = "UPDATE `user` SET `roomId`='$emptyRoom',`regTime`='".date('Y-m-d H:i:s',time())."' WHERE IdNum='$id'";
+
+// $conn->query($sqlUpdate);
+// $conn->query($sqlUpdate2);
+
+
+// header('Location: studentpage.php')
+
+
 ?>
 
 <!doctype html>
