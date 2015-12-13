@@ -29,7 +29,7 @@ if (!isset($_SESSION['userIDD']))
 
      $resultk=$conn->query ("SELECT CONCAT(h.name,' ' ,r.room_id) FROM hostel h INNER JOIN house u INNER JOIN room r INNER JOIN stud_trans s ON h.hostel_ai=u.hostel_ai AND u.house_id=r.house_id AND s.room_id=r.room_id WHERE s.user_id='$id' AND s.conditions='ACTIVE'");
     $rowk=$resultk->fetch_row();
-    
+
 
 
 // $sqlr = "SELECT room_id FROM room r WHERE r.user_id IS NULL OR
@@ -41,11 +41,11 @@ if (!isset($_SESSION['userIDD']))
 //       $emptyRoom = $rowr["room_id"];
 //     }
 // } else {
-//   echo "<script language='Javascript'> 
-//     alert('No empty room!'); 
+//   echo "<script language='Javascript'>
+//     alert('No empty room!');
 //     location.href='studentpage.php'
 //     </script>";
-//       exit(); 
+//       exit();
 
 //     // echo "Error: " . $sql . "<br>" . $conn->error;
 // }
@@ -109,7 +109,7 @@ if (!isset($_SESSION['userIDD']))
               </li>
               <li>
                   <a href="logout.php"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout</a>
-              </li> 
+              </li>
           </ul>
       </nav>
 			<!-- /#sidebar-wrapper -->
@@ -149,7 +149,7 @@ if (!isset($_SESSION['userIDD']))
                       </div>
                       <div class="panel-body">
                         <h4>--Click submit to confirm and register for room--</h4>
-                        
+
                         <form method="post" action="#">
                        <div class="form-group ">
                     <label class="control-label " for="fname">
@@ -237,37 +237,37 @@ if (!isset($_SESSION['userIDD']))
                       </div>
                     </div>
                   </div>
+                </div>
 
                   <div id="daftarKumpulan" style="display:none">
                     <div class="panel panel-success">
                       <div class="panel-heading">
                         <h3 class="panel-title">Group Entry</h3>
                         <br>
-                        <strong>Info:</strong> Please insert other student metric number. 
+                        <strong>Info:</strong> Please insert other student metric number.
                       </div>
                       <div class="panel-body">
-                        <form name="myform">
-<table>
-<tr><td>Number of Students </td><td><select name="numDep" id="dropdown">
-    <option value="">Please Select</option>
-    <option value="0">0</option>
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-    <option value="6">6</option>
-    <option value="7">7</option>
-    <option value="8">8</option>
-    <option value="9">9</option>
-    <option value="10">10</option></select></td>
-</tr>
-
-<tr id="textboxDiv"></tr>
-</table>
-<br>
-<button id="submitted" type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-ok"></i> Submit</button>
-</form>
+                <form name="myform">
+                  <table>
+                  <tr>
+                    <td>Number of Students </td><td><select name="numDep" id="dropdown">
+                      <option value="">Please Select</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                    </select></td>
+                  </tr>
+                  <tr id="textboxDiv"></tr>
+                  </table>
+                  <br>
+                  <button id="submitted" type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-ok-sign"></i> Submit</button>
+                  </form>
                       </div>
                     </div>
                   </div>
@@ -306,18 +306,15 @@ $(document).ready(function(){
         $("#daftarKumpulan").toggle('clip',0,800);
       });
 
-});
-
-$(document).ready(function() {
-    $("#dropdown").change(function() {
+      $("#dropdown").change(function(){
         var selVal = $(this).val();
-        $("#textboxDiv").html('');
-        if(selVal > 0) {
-            for(var i = 1; i<= selVal; i++) {
-                $("#textboxDiv").append('<br><input type="text" name="textVal[]" value="" /><br>');
+          $("#textboxDiv").html('');
+              if(selVal > 0) {
+                for(var i = 1; i<= selVal; i++) {
+                    $("#textboxDiv").append('<p>Please insert student ' + i + ' matrix number : <input type="text" name="textVal[]" value="" /></p><br>');
+                }
             }
-        }
-    });
+        });
 });
 
 
