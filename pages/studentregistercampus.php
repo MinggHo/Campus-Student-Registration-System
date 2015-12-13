@@ -148,6 +148,7 @@ if (!isset($_SESSION['userIDD']))
                         <h3 class="panel-title">Individual Entry</h3>
                       </div>
                       <div class="panel-body">
+                        <span class="label label-success label-as-badge">1 . Please choose room - click on the picture below</span>
                         <h4>--Click submit to confirm and register for room--</h4>
 
                         <form method="post" action="#">
