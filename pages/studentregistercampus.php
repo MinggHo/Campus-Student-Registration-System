@@ -114,169 +114,124 @@ if (!isset($_SESSION['userIDD']))
       </nav>
 			<!-- /#sidebar-wrapper -->
 
-			<!-- Page Content -->
-      <div id="page-content-wrapper">
-          <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
-              <span class="hamb-top"></span>
-        <span class="hamb-middle"></span>
-      <span class="hamb-bottom"></span>
-          </button>
-          <div class="container">
-              <div class="row">
-                  <div class="col-lg-8 col-lg-offset-2">
-                    <header>
-                      <h1 id="fittext">Campus Registration - CSRS</h1>
-                    </header>
+<!-- Page Content -->
+<div id="page-content-wrapper">
+  <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+    <span class="hamb-top"></span>
+    <span class="hamb-middle"></span>
+    <span class="hamb-bottom"></span>
+  </button>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-lg-offset-2">
+        <header>
+          <h1 id="fittext">Campus Registration - CSRS</h1>
+        </header>
 
-                  <div class="panel panel-primary">
-                    <div class="panel-heading">
-                      <h3 class="panel-title">Please make your selection</h3>
-                    </div>
-                    <div class="panel-body">
-                      <button id="showIndividu" class="button button--itzel button--text-thick"><i class="button__icon fa fa-user"></i>
-                        <span>Individual Entry</span>
-                      </button>
-                      <button id="showKumpulan" class="button button--itzel button--text-thick"><i class="button__icon fa fa-group"></i>
-                        <span>Group Entry</span>
-                      </button>
-                    </div>
-                  </div>
-
-                  <div id="daftarIndividu" style="display:none">
-                    <div class="panel panel-success">
-                      <div class="panel-heading">
-                        <h3 class="panel-title">Individual Entry</h3>
-                      </div>
-                      <div class="panel-body">
-                        <span class="label label-success label-as-badge">1 . Please choose room - click on the picture below</span>
-                        <h4>--Click submit to confirm and register for room--</h4>
-
-                        <form method="post" action="#">
-                       <div class="form-group ">
-                    <label class="control-label " for="fname">
-                     Full Name :
-                    </label>
-                    <div class="input-group">
-                     <div class="input-group-addon">
-                      <i class="glyphicon glyphicon-pencil">
-                      </i>
-                     </div>
-                     <input class="form-control" id="fname" name="fname" disabled value="<?=$rowu['name']?>"  type="text"/>
-                    </div>
-                   </div>
-                   <div class="form-group ">
-                    <label class="control-label requiredField" for="email">
-                     Email :
-                     <span class="asteriskField">
-                      *
-                     </span>
-                    </label>
-                    <div class="input-group">
-                     <div class="input-group-addon">
-                      <i class="glyphicon glyphicon-envelope">
-                      </i>
-                     </div>
-                     <input class="form-control" id="email" name="email" disabled value="<?=$rowu['email']?>"  type="text"/>
-                    </div>
-                       <div class="form-group ">
-                    <label class="control-label " for="password">
-                     Password :
-                    </label>
-                    <div class="input-group">
-                     <div class="input-group-addon">
-                      <i class="glyphicon glyphicon-lock">
-                      </i>
-                     </div>
-                     <input class="form-control" id="password" name="password" disabled value="<?=$rowm['passw']?>"  type="password"/>
-                    </div>
-                   </div>
-
-                   <div class="form-group ">
-                    <label class="control-label " for="identification Number">
-                     Identification Number :
-                    </label>
-                    <div class="input-group">
-                     <div class="input-group-addon">
-                      <i class="glyphicon glyphicon-flag">
-                      </i>
-                     </div>
-                     <input class="form-control" id="icnum" name="icnum" disabled value="<?=$rowu['ic_num']?>"  type="text"/>
-                    </div>
-                   </div>
-                   <div class="form-group ">
-                    <label class="control-label " for="userid">
-                     Student ID :
-                    </label>
-                    <div class="input-group">
-                     <div class="input-group-addon">
-                      <i class="glyphicon glyphicon-credit-card">
-                      </i>
-                     </div>
-                     <input class="form-control" id="userid" name="userid" disabled value="<?=$rowu['user_id']?>" type="text"/>
-                    </div>
-                   </div>
-                   <div class="form-group ">
-                    <label class="control-label " for="name2">
-                     Contact Number :
-                    </label>
-                    <div class="input-group">
-                     <div class="input-group-addon">
-                      <i class="glyphicon glyphicon-earphone">
-                      </i>
-                     </div>
-                     <input class="form-control" id="telnum" name="telnum" disabled value="<?=$rowu['tel_num']?>"  type="text"/>
-                    </div>
-                   </div>
-                       <div class="form-group">
-                        <div>
-                         <button class="btn btn-primary" name="submit" type="submit"><i class="glyphicon glyphicon-ok-sign"></i>
-                          Submit
-                         </button>
-                        </div>
-                       </div>
-                      </form>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                  <div id="daftarKumpulan" style="display:none">
-                    <div class="panel panel-success">
-                      <div class="panel-heading">
-                        <h3 class="panel-title">Group Entry</h3>
-                        <br>
-                        <strong>Info:</strong> Please insert other student metric number.
-                      </div>
-                      <div class="panel-body">
-                <form name="myform">
-                  <table>
-                  <tr>
-                    <td>Number of Students </td><td><select name="numDep" id="dropdown">
-                      <option value="">Please Select</option>
-                      <option value="2">2</option>
-                      <option value="3">3</option>
-                      <option value="4">4</option>
-                      <option value="5">5</option>
-                      <option value="6">6</option>
-                      <option value="7">7</option>
-                      <option value="8">8</option>
-                      <option value="9">9</option>
-                      <option value="10">10</option>
-                    </select></td>
-                  </tr>
-                  <tr id="textboxDiv"></tr>
-                  </table>
-                  <br>
-                  <button id="submitted" type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-ok-sign"></i> Submit</button>
-                  </form>
-                      </div>
-                    </div>
-                  </div>
-                  </div>
-              </div>
-          </div>
-      </div><!-- /#page-content-wrapper -->
+<div class="panel panel-primary">
+  <div class="panel-heading">
+    <h3 class="panel-title">Please make your selection</h3>
   </div>
+  <div class="panel-body">
+    <button id="showIndividu" class="button button--itzel button--text-thick"><i class="button__icon fa fa-user"></i>
+      <span>Individual Entry</span>
+    </button>
+
+    <button id="showKumpulan" class="button button--itzel button--text-thick"><i class="button__icon fa fa-group"></i>
+      <span>Group Entry</span>
+    </button>
+  </div>
+</div>
+
+<div id="daftarIndividu" style="display:none">
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <h3 class="panel-title">Individual Entry</h3>
+    </div>
+    <div class="panel-body">
+      <p><span class="label label-success label-as-badge">1 . Click submit to confirm and register for room <i style="color:#FAFF00">[Please note your room is random]</i></span></p>
+
+      <form method="post" action="#">
+        <div class="form-group ">
+          <label class="control-label " for="fname">
+            Full Name :
+          </label>
+          <div class="input-group">
+            <div class="input-group-addon">
+              <i class="glyphicon glyphicon-pencil"></i>
+            </div>
+            <input class="form-control" id="fname" name="fname" disabled value="<?=$rowu['name']?>"  type="text"/>
+          </div>
+
+          <div>
+            <div class="form-group ">
+              <label class="control-label " for="userid">
+                Student ID :
+              </label>
+              <div class="input-group">
+                <div class="input-group-addon">
+                  <i class="glyphicon glyphicon-credit-card"></i>
+                </div>
+                <input class="form-control" id="userid" name="userid" disabled value="<?=$rowu['user_id']?>" type="text"/>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <div>
+                <p><span class="label label-success label-as-badge">2 . You'll be given a QR Code through e-mail <i style="color:#FAFF00">[Please open your email after submit]</i></span></p>
+
+                <button id="submitted" class="btn btn-primary" name="submit" type="submit"><i class="glyphicon glyphicon-ok-sign"></i>
+                  Submit
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div><!-- daftar individu div -->
+
+
+    <div id="daftarKumpulan" style="display:none">
+      <div class="panel panel-success">
+        <div class="panel-heading">
+          <h3 class="panel-title">Group Entry</h3>
+        </div>
+        <div class="panel-body">
+          <p><span class="label label-success label-as-badge">1 . Please select how many house members <i style="color:#FAFF00">[Please note your room is random]</i></span></p>
+          <div class="form-group input-group input-group-sm">
+            <label for="sel1">Number of Students</label>
+            <select class="form-control" name="numDep" id="dropdown">
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+              <option>6</option>
+              <option>7</option>
+              <option>8</option>
+              <option>9</option>
+              <option>10</option>
+            </select>
+          </div>
+
+          <form name="myform">
+            <table>
+              <tr id="textboxDiv"></tr>
+            </table>
+              <p><span class="label label-success label-as-badge">2 . You'll be given a QR Code through e-mail <i style="color:#FAFF00">[Please open your email after submit]</i></span></p>
+
+              <button id="submitted" type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-ok-sign"></i> Submit</button>
+            </form>
+          </div>
+        </div>
+      </div> <!--Daftar Kumpulan div -->
+    </div>
+  </div>
+</div>
+</div>
+</div><!-- /#page-content-wrapper -->
+</div>
 </div><!-- /#wrapper -->
 
 
@@ -290,6 +245,15 @@ $(document).ready(function(){
 				text: "Please register your room",
 				type: "success",
 				confirmButtonText: "OK" });
+
+      //   $("#submitted").submit(function(){
+      //     swal({
+      //       title:"Success!",
+      //       text: "You'll be given a QR Code",
+      //       type: "success",
+      //       confirmButtonText: "OK",
+      //       timer: 2000 });
+			// });
 
       $("#showIndividu").click(function(){
         if($("#daftarKumpulan").is(":visible")){
@@ -311,10 +275,25 @@ $(document).ready(function(){
         var selVal = $(this).val();
           $("#textboxDiv").html('');
               if(selVal > 0) {
-                for(var i = 1; i<= selVal; i++) {
-                    $("#textboxDiv").append('<p>Please insert student ' + i + ' matrix number : <input type="text" name="textVal[]" value="" /></p><br>');
+
+                var i = 1;
+
+                $("#textboxDiv").append(
+                    '<div class="input-group input-group-sm">'
+                       + '<span class="input-group-addon" id="sizing-addon3">' + i + '</span>'
+                       + '<input type="text" name ="textVal[]" value ="<?=$rowu['user_id']?>" class="form-control" placeholder="Student matric number" aria-describedby="sizing-addon3" disabled>'
+                    + '</div></br>');
+
+                for(var i = 2; i<= selVal; i++){
+                    $("#textboxDiv").append(
+                      '<div class="input-group input-group-sm">'
+                         + '<span class="input-group-addon" id="sizing-addon3">' + i + '</span>'
+                         + '<input type="text" name ="textVal[]" value ="" class="form-control" placeholder="Student matric number" aria-describedby="sizing-addon3" required>'
+                      + '</div></br>'
+                      // '<p>Please insert student ' + i + ' matrix number : <input type="text" name="textVal[]" value="" /></p><br>'
+                    );
+                  }
                 }
-            }
         });
 });
 
