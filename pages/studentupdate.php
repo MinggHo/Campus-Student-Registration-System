@@ -29,7 +29,7 @@ if (!isset($_SESSION['userIDD']))
 
      $resultk=$conn->query ("SELECT CONCAT(h.name,' ' ,r.room_id) FROM hostel h INNER JOIN house u INNER JOIN room r INNER JOIN stud_trans s ON h.hostel_ai=u.hostel_ai AND u.house_id=r.house_id AND s.room_id=r.room_id WHERE s.user_id='$id' AND s.conditions='ACTIVE'");
     $rowk=$resultk->fetch_row();
-    
+
 
 ?>
 
@@ -46,7 +46,7 @@ if (!isset($_SESSION['userIDD']))
 	<link rel="stylesheet" href="../assets/css/cssutama.css" />
   <link rel="stylesheet" href="../assets/css/sweetalert.css">
 
-  
+
 
 	<title>Update Page</title>
 </head>
@@ -132,16 +132,16 @@ if (!isset($_SESSION['userIDD']))
 										<form method="post" action="studentupdate.php">
 
                       <?php if ((isset($_POST["MM_update"]))) {
-                           $passw=md5($_POST['passw']);         
+                           $passw=md5($_POST['passw']);
                           $sqlp="UPDATE student SET email = '$email',tel_num = '$tel_num' WHERE user_id='$id'";
                           $resultp = mysqli_query($conn,$sqlp);
                           // $sqlq="UPDATE user SET passw = '$passw' WHERE user_id='$id'";
                           // $resultq = mysqli_query($conn,$sqlq);
-                          echo "<script language='Javascript'> 
-                          alert('Data has been updated'); 
+                          echo "<script language='Javascript'>
+                          alert('Data has been updated');
                           location.href='studentpage.php'
                           </script>";
-                            exit(); 
+                            exit();
                                        }
                                     ?>
 
@@ -186,7 +186,7 @@ if (!isset($_SESSION['userIDD']))
               				<i class="glyphicon glyphicon-lock">
               				</i>
               			 </div>
-              			 <input class="form-control" id="password" name="password" disabled=""> value="<?=$rowm['passw']?>"  type="password"/>
+              			 <input class="form-control" id="password" name="password" disabled="" value="<?=$rowm['passw']?>"  type="password"/>
               			</div>
               		 </div>
 

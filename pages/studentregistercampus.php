@@ -72,6 +72,8 @@ if (!isset($_SESSION['userIDD']))
 	<link rel     ="stylesheet" href="../assets/css/bootstrap.min.css"> <!-- bootstrap -->
   <script src   ="../assets/js/jquery.min.js"></script>
   <script src   ="../assets/js/bootstrap.min.js"></script>
+  <script src   ="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+  <script src="http://malsup.github.com/jquery.form.js"></script>
 
 	<link rel="stylesheet" href="../assets/css/cssutama.css" />
   <link rel="stylesheet" href="../assets/css/sweetalert.css">
@@ -105,7 +107,7 @@ if (!isset($_SESSION['userIDD']))
                   <a href="studentcomplaint.php"><span class="glyphicon glyphicon-wrench" aria-hidden="true"></span> Report</a>
               </li>
               <li>
-                  <a href="#"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Campus List Out</a>
+                  <a href="studentout.php"><span class="glyphicon glyphicon-check" aria-hidden="true"></span> Campus List Out</a>
               </li>
               <li>
                   <a href="logout.php"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout</a>
@@ -151,7 +153,7 @@ if (!isset($_SESSION['userIDD']))
     <div class="panel-body">
       <p><span class="label label-success label-as-badge">1 . Click submit to confirm and register for room <i style="color:#FAFF00">[Please note your room is random]</i></span></p>
 
-      <form method="post" action="#">
+      <form id="myform" method="get" action="studentregistercampus.php">
         <div class="form-group ">
           <label class="control-label " for="fname">
             Full Name :
@@ -185,53 +187,53 @@ if (!isset($_SESSION['userIDD']))
                 </button>
               </div>
             </div>
-          </form>
+          </form><!-- End of form -->
         </div>
       </div>
     </div>
   </div>
 </div><!-- daftar individu div -->
 
-
-    <div id="daftarKumpulan" style="display:none">
-      <div class="panel panel-success">
-        <div class="panel-heading">
-          <h3 class="panel-title">Group Entry</h3>
-        </div>
-        <div class="panel-body">
-          <p><span class="label label-success label-as-badge">1 . Please select how many house members <i style="color:#FAFF00">[Please note your room is random]</i></span></p>
-          <div class="form-group input-group input-group-sm">
-            <label for="sel1">Number of Students</label>
-            <select class="form-control" name="numDep" id="dropdown">
-              <option>2</option>
-              <option>3</option>
-              <option>4</option>
-              <option>5</option>
-              <option>6</option>
-              <option>7</option>
-              <option>8</option>
-              <option>9</option>
-              <option>10</option>
-            </select>
-          </div>
-
-          <form name="myform">
-            <table>
-              <tr id="textboxDiv"></tr>
-            </table>
-              <p><span class="label label-success label-as-badge">2 . You'll be given a QR Code through e-mail <i style="color:#FAFF00">[Please open your email after submit]</i></span></p>
-
-              <button id="submitted" type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-ok-sign"></i> Submit</button>
-            </form>
-          </div>
-        </div>
-      </div> <!--Daftar Kumpulan div -->
+<div id="daftarKumpulan" style="display:none">
+  <div class="panel panel-success">
+    <div class="panel-heading">
+      <h3 class="panel-title">Group Entry</h3>
     </div>
+
+<div class="panel-body">
+  <p><span class="label label-success label-as-badge">1 . Please select how many house members <i style="color:#FAFF00">[Please note your room is random]</i></span></p>
+
+    <div class="form-group input-group input-group-sm">
+      <label for="sel1">Number of Students</label>
+      <select class="form-control" name="numDep" id="dropdown">
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+        <option>6</option>
+        <option>7</option>
+        <option>8</option>
+        <option>9</option>
+        <option>10</option>
+      </select>
+    </div>
+
+    <form id="myform">
+      <table>
+        <tr id="textboxDiv"></tr>
+      </table>
+      <p><span class="label label-success label-as-badge">2 . You'll be given a QR Code through e-mail <i style="color:#FAFF00">[Please open your email after submit]</i></span></p>
+
+      <button id="submitted" type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-ok-sign"></i> Submit</button>
+    </form>
   </div>
-</div>
-</div>
+
+</div><!-- End of panel -->
+</div><!--Daftar Kumpulan div -->
+</div><!-- end column -->
+</div><!-- row  -->
+</div><!-- container -->
 </div><!-- /#page-content-wrapper -->
-</div>
 </div><!-- /#wrapper -->
 
 
@@ -240,20 +242,27 @@ if (!isset($_SESSION['userIDD']))
 $(document).ready(function(){
 		  fitText(document.getElementById('fittext'), 1.2);
 
-			swal({
-				title: "Register here!",
-				text: "Please register your room",
-				type: "success",
-				confirmButtonText: "OK" });
+      // wait for the DOM to be loaded
+      // bind 'myForm' and provide a simple callback function
+      $('#myform').submit(function(event) {
+        var str = $('#myform').attr('action'),
+        method = $("#myform").attr('method'),
+        name = $("#fname").val();
 
-      //   $("#submitted").submit(function(){
-      //     swal({
-      //       title:"Success!",
-      //       text: "You'll be given a QR Code",
-      //       type: "success",
-      //       confirmButtonText: "OK",
-      //       timer: 2000 });
-			// });
+        console.log(str + " " + method + " " + name);
+
+        event.preventDefault();
+        swal({
+          title:"Success!",
+          text: "You'll be given a QR Code on Email",
+          type: "success",
+          confirmButtonText: "OK",
+          closeOnConfirm: false
+        },
+        function(isConfirm){
+          window.location.href = str;
+        });
+      });
 
       $("#showIndividu").click(function(){
         if($("#daftarKumpulan").is(":visible")){
@@ -281,14 +290,14 @@ $(document).ready(function(){
                 $("#textboxDiv").append(
                     '<div class="input-group input-group-sm">'
                        + '<span class="input-group-addon" id="sizing-addon3">' + i + '</span>'
-                       + '<input type="text" name ="textVal[]" value ="<?=$rowu['user_id']?>" class="form-control" placeholder="Student matric number" aria-describedby="sizing-addon3" disabled>'
+                       + '<input type="text" id="student'+ i+'" name="textVal[]" value ="<?=$rowu['user_id']?>" maxlength="10" class="form-control" placeholder="Student matric number" aria-describedby="sizing-addon3" disabled>'
                     + '</div></br>');
 
                 for(var i = 2; i<= selVal; i++){
                     $("#textboxDiv").append(
                       '<div class="input-group input-group-sm">'
                          + '<span class="input-group-addon" id="sizing-addon3">' + i + '</span>'
-                         + '<input type="text" name ="textVal[]" value ="" class="form-control" placeholder="Student matric number" aria-describedby="sizing-addon3" required>'
+                         + '<input type="text" id="student'+ i+'" name ="textVal[]" value ="" maxlength="10" pattern=".{10,}" title="Error : Invalid Data - Length must be 10" class="form-control" placeholder="Student matric number" aria-describedby="sizing-addon3" required>'
                       + '</div></br>'
                       // '<p>Please insert student ' + i + ' matrix number : <input type="text" name="textVal[]" value="" /></p><br>'
                     );
@@ -296,8 +305,6 @@ $(document).ready(function(){
                 }
         });
 });
-
-
 </script>
 <script src="../assets/js/skrip.js"></script>
 <script src="../assets/js/sweetalert-dev.js"></script>
