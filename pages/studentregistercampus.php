@@ -290,20 +290,51 @@ $(document).ready(function(){
                 $("#textboxDiv").append(
                     '<div class="input-group input-group-sm">'
                        + '<span class="input-group-addon" id="sizing-addon3">' + i + '</span>'
-                       + '<input type="text" id="student'+ i+'" name="textVal[]" value ="<?=$rowu['user_id']?>" maxlength="10" class="form-control" placeholder="Student matric number" aria-describedby="sizing-addon3" disabled>'
+                       + '<input type="text" id="student'+ i +'" name="textVal[]" value ="<?=$rowu['user_id']?>" maxlength="10" class="form-control" placeholder="Student matric number" aria-describedby="sizing-addon3" disabled>'
                     + '</div></br>');
 
                 for(var i = 2; i<= selVal; i++){
                     $("#textboxDiv").append(
                       '<div class="input-group input-group-sm">'
                          + '<span class="input-group-addon" id="sizing-addon3">' + i + '</span>'
-                         + '<input type="text" id="student'+ i+'" name ="textVal[]" value ="" maxlength="10" pattern=".{10,}" title="Error : Invalid Data - Length must be 10" class="form-control" placeholder="Student matric number" aria-describedby="sizing-addon3" required>'
-                      + '</div></br>'
+                         + '<input type="text" id="student'+ i +'" name ="textVal[]" value ="" maxlength="10" pattern=".{10,}" title="Error : Invalid Data - Length must be 10" class="form-control" placeholder="Student matric number" aria-describedby="sizing-addon3" required>'
+                      + '</div><div id="help'+ i +'"></div></br>'
                       // '<p>Please insert student ' + i + ' matrix number : <input type="text" name="textVal[]" value="" /></p><br>'
                     );
                   }
                 }
         });
+
+        // super validator
+
+        $(document).on('focus','#student2',function(){
+          console.log('in');
+
+        }).on('blur','#student2',function(){
+          var value = $('#student2').val();
+          var newval = value.charAt(0);
+          var subval = value.substring(1,9);
+          var subBool = $.isNumeric(subval);
+
+          if ((newval == 'B' || newval == 'b') && (subBool == 1)){
+            $('#help2').after(
+              '<p id="help2" style="color: #00FB21" class="help-block"><small>Success<small></p>'
+            );
+            $('p#help2').fadeOut(1000);
+          } else {
+            $('#help2').after(
+              '<p id="help2" style="color: #FF0000" class="help-block"><small>Error : Not a valid matric number!<small></p>'
+            );
+            $('p#help2').fadeOut(5000);
+          }
+          console.log('out');
+        });
+// $("#title").focus(function() {
+//     console.log('in');
+// }).blur(function() {
+//     console.log('out');
+// });
+
 });
 </script>
 <script src="../assets/js/skrip.js"></script>
