@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel     ="stylesheet" href="../assets/css/bootstrap.min.css"> <!-- bootstrap -->
+  <script src   ="../assets/js/jquery.min.js"></script>
+  <script src   ="../assets/js/bootstrap.min.js"></script>
+  <script src   ="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+  <script src   ="http://malsup.github.com/jquery.form.js"></script>
+
+  <link rel="stylesheet" href="../assets/css/cssutama.css" />
+  <link rel="stylesheet" href="../assets/css/checkbox.css">
+  <link rel="stylesheet" href="../assets/css/sweetalert.css">
+  <link rel="stylesheet" href="../assets/css/buttons.css">
+  <link rel="stylesheet" href="../assets/css/font-awesome.min.css" /> <!--icon -->
+  <link rel="stylesheet" type="text/css" href="../assets/css/font-awesome.css">
+  <title>Registration Out Campus</title>
+</head>
+<body>
+
+<div id="show">
+  <input id="username" type="text" name="name" value="">
+    <p><span id="user-result"></span></p>
+</div>
+
+
+<script type="text/javascript">
+$(document).ready(function() {
+    var x_timer;
+    $("#username").keyup(function (e){
+        clearTimeout(x_timer);
+        var user_name = $(this).val();
+        x_timer = setTimeout(function(){
+            check_username_ajax(user_name);
+        }, 1000);
+    });
+
+function check_username_ajax(username){
+    //$("#user-result").html('<img src="ajax-loader.gif" />');
+    $.post('data.php', {'username':username}, function(data) {
+      $("#user-result").html(data);
+    });
+}
+});
+</script>
+
+<script src="../assets/js/skrip.js"></script>
+</body>
+</html>

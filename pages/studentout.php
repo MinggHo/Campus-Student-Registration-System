@@ -81,7 +81,7 @@ if (!isset($_SESSION['userIDD']))
   <link rel="stylesheet" href="../assets/css/buttons.css">
 	<link rel="stylesheet" href="../assets/css/font-awesome.min.css" /> <!--icon -->
 	<link rel="stylesheet" type="text/css" href="../assets/css/font-awesome.css">
-	<title>Registration Campus</title>
+	<title>Registration Out Campus</title>
 </head>
 <body>
 	<div id="wrapper">
