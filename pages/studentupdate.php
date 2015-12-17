@@ -27,10 +27,8 @@ if (!isset($_SESSION['userIDD']))
     $resultu = mysqli_query($conn,$sqlu);
     $rowu = mysqli_fetch_assoc($resultu);
 
-     $resultk=$conn->query ("SELECT CONCAT(h.name,' ' ,r.room_id) FROM hostel h INNER JOIN house u INNER JOIN room r INNER JOIN stud_trans s ON h.hostel_ai=u.hostel_ai AND u.house_id=r.house_id AND s.room_id=r.room_id WHERE s.user_id='$id' AND s.conditions='ACTIVE'");
+    $resultk=$conn->query ("SELECT CONCAT(h.name,' ' ,r.room_id) FROM hostel h INNER JOIN house u INNER JOIN room r INNER JOIN stud_trans s ON h.hostel_ai=u.hostel_ai AND u.house_id=r.house_id AND s.room_id=r.room_id WHERE s.user_id='$id' AND s.conditions='ACTIVE'");
     $rowk=$resultk->fetch_row();
-
-
 ?>
 
 <!doctype html>
@@ -42,11 +40,29 @@ if (!isset($_SESSION['userIDD']))
 	<link rel     ="stylesheet" href="../assets/css/bootstrap.min.css"> <!-- bootstrap -->
   <script src   ="../assets/js/jquery.min.js"></script>
   <script src   ="../assets/js/bootstrap.min.js"></script>
+  <script src="../assets/js/sweetalert-dev.js"></script>
 
 	<link rel="stylesheet" href="../assets/css/cssutama.css" />
   <link rel="stylesheet" href="../assets/css/sweetalert.css">
 
-
+  <script>
+    function mysweetsweet(){
+      var str = 'studentpage.php';
+      method = $("#update").attr('method');
+      console.log(str);
+      event.preventDefault();
+      swal({
+        title:"Success!",
+        text: "You'll be given a QR Code on Email",
+        type: "success",
+        confirmButtonText: "OK",
+        closeOnConfirm: false
+      },
+      function(isConfirm){
+        window.location.href = str;
+    });
+  }
+  </script>
 
 	<title>Update Page</title>
 </head>
@@ -129,21 +145,24 @@ if (!isset($_SESSION['userIDD']))
           </div>
         </fieldset>
 
-										<form method="post" action="studentupdate.php">
+										<form id="update" method="post" action="<?php echo htmlentities($_SERVER['PHP_SELF']); ?>">
 
-                      <?php if ((isset($_POST["MM_update"]))) {
-                           $passw=md5($_POST['passw']);
-                          $sqlp="UPDATE student SET email = '$email',tel_num = '$tel_num' WHERE user_id='$id'";
-                          $resultp = mysqli_query($conn,$sqlp);
-                          // $sqlq="UPDATE user SET passw = '$passw' WHERE user_id='$id'";
-                          // $resultq = mysqli_query($conn,$sqlq);
-                          echo "<script language='Javascript'>
-                          alert('Data has been updated');
-                          location.href='studentpage.php'
-                          </script>";
-                            exit();
-                                       }
-                                    ?>
+                      <?php
+                      if ((isset($_POST["MM_update"]))) {
+                        $passw=md5($_POST['passw']);
+                        $sqlp="UPDATE student SET email = '$email',tel_num = '$tel_num' WHERE user_id='$id'";
+                        $resultp = mysqli_query($conn,$sqlp);
+                        // $sqlq="UPDATE user SET passw = '$passw' WHERE user_id='$id'";
+                        // $resultq = mysqli_query($conn,$sqlq);
+                        echo '
+                        <script>
+                        console.log("jalan sendiri");
+                        $("#update").submit(function(event){
+                          mysweetsweet(event);
+                         });
+                        </script>';
+                        }
+                        ?>
 
                    <div class="form-group ">
                     <label class="control-label " for="fname">
@@ -169,7 +188,7 @@ if (!isset($_SESSION['userIDD']))
                       <i class="glyphicon glyphicon-envelope">
                       </i>
                      </div>
-                     <input class="form-control" id="email" name="email" value="<?=$rowu['email']?>"  type="text"/>
+                     <input class="form-control" id="email" name="email" value="<?=$rowu['email']?>"  type="email"/>
                     </div>
                     <span class="help-block">
                      Please put your email so that the system can send its
@@ -243,23 +262,14 @@ if (!isset($_SESSION['userIDD']))
 
 
 <script type="text/javascript">
-
 $(document).ready(function(){
 
-      $('[data-toggle="tooltip"]').tooltip();
+$('[data-toggle="tooltip"]').tooltip();
+fitText(document.getElementById('fittext'), 1.2);
 
-		  fitText(document.getElementById('fittext'), 1.2);
-
-			swal({
-				//title: "Congrats!",
-				//text: "Message alert paling keren udah berjaya installasi",
-				//type: "success",
-				//confirmButtonText: "Keren" });
 });
-
 </script>
 <script src="../assets/js/skrip.js"></script>
-<script src="../assets/js/sweetalert-dev.js"></script>
 <script src="../assets/js/fittext.js"></script>
 </body>
 </html>

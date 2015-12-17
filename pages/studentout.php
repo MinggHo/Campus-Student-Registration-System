@@ -152,39 +152,31 @@ if (!isset($_SESSION['userIDD']))
       <div class="checkbox checkbox-primary">
           <input id="check1" class="styled" type="checkbox" checked>
           <label for="check1">
-              Soal Pertama untuk awak
+              Keadaan rumah bersih.
           </label>
       </div>
     </li>
     <li class="list-group-item">
       <div class="checkbox checkbox-primary">
-          <input id="check2" class="styled" type="checkbox">
+          <input id="check2" class="styled" type="checkbox" checked>
           <label for="check2">
-              Soal Pertama untuk awak
+              Peralatan rumah tidak rosak.
           </label>
       </div>
     </li>
     <li class="list-group-item">
       <div class="checkbox checkbox-primary">
-          <input id="check3" class="styled" type="checkbox">
+          <input id="check3" class="styled" type="checkbox" checked>
           <label for="check3">
-              Soal Pertama untuk awak
+              Tiada kehilangan kunci.
           </label>
       </div>
     </li>
     <li class="list-group-item">
-      <div class="checkbox checkbox-primary">
-          <input id="check4" class="styled" type="checkbox">
+      <div class="checkbox checkbox-danger">
+          <input id="check4" class="styled" type="checkbox" checked required title="Bahagia ini wajib">
           <label for="check4">
-              Soal Pertama untuk awak
-          </label>
-      </div>
-    </li>
-    <li class="list-group-item">
-      <div class="checkbox checkbox-primary">
-          <input id="check5" class="styled" type="checkbox">
-          <label for="check5">
-              Soal Pertama untuk awak
+              Andakah pernyataan awak ni benar?
           </label>
       </div>
     </li>
