@@ -217,13 +217,11 @@ if (!isset($_SESSION['userIDD']))
         <option>10</option>
       </select>
     </div>
-
     <form id="form2">
       <table>
         <tr id="textboxDiv"></tr>
       </table>
       <p><span class="label label-success label-as-badge">2 . You'll be given a QR Code through e-mail <i style="color:#FAFF00">[Please open your email after submit]</i></span></p>
-
       <button id="submitted" type="submit" class="btn btn-primary"><i class="glyphicon glyphicon-ok-sign"></i> Submit</button>
     </form>
   </div>
@@ -284,7 +282,6 @@ $(document).ready(function(){
         var selVal = $(this).val();
           $("#textboxDiv").html('');
               if(selVal > 0) {
-
                 var i = 1;
 
                 $("#textboxDiv").append(
